@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills | Cimil Charly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      padding: 15px;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #1abc9c;
+    }
+
+    section {
+      padding: 100px 20px 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .skills ul, .certifications {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 0;
+    }
+
+    .skills li, .certifications li {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    }
+
+    .skills li:hover, .certifications li:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+
+    .skills li i, .certifications li i {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .skills li i {
+      color: #1abc9c;
+    }
+
+    .certifications li i {
+      color: #f1c40f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.7);
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html" class="active">Skills</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="skills">
+  <h2>Skills & Certifications</h2>
+
+  <h3 style="margin-bottom:15px;">Technical Skills</h3>
+  <ul class="skills">
+    <li>
+      <i class="fa-solid fa-code"></i>
+      <h3>Programming</h3>
+      Python, C, Django, HTML , CSS, JavaScript, React, Node.js, Java, Sql ,Sqlite3 
+        </li>
+    <li>
+      <i class="fa-solid fa-robot"></i>
+      <h3>AI & ML</h3>
+      Introduction to Machine Learning, Scikit-learn, TensorFlow
+    </li>
+    <li>
+      <i class="fa-solid fa-database"></i>
+      <h3>Databases & Tools</h3>
+      MongoDB, MATLAB, Jupyter Notebook, Git
+    </li>
+    <li>
+      <i class="fa-solid fa-network-wired"></i>
+      <h3>Networking</h3>
+      Networking Development
+    </li>
+  </ul>
+
+  <h3 style="margin:50px 0 20px;">Certifications</h3>
+  <ul class="certifications">
+    <li><i class="fa-solid fa-certificate"></i> Chatbot Certificate</li>
+    <li><i class="fa-solid fa-certificate"></i> AWS Academy Graduate</li>
+    <li><i class="fa-solid fa-certificate"></i> Programming for Data Analysis</li>
+    <li><i class="fa-solid fa-certificate"></i> Python</li>
+    <li><i class="fa-solid fa-certificate"></i> Networking Development</li>
+    <li><i class="fa-solid fa-certificate"></i> MongoDB</li>
+    <li><i class="fa-solid fa-certificate"></i> Introduction to Machine Learning</li>
+    <li><i class="fa-solid fa-certificate"></i> Scaler OS</li>
+  </ul>
+</section>
+
+  <footer>
+    <p>© 2025 Cimil Charly</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    const reveal = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const boxTop = sec.getBoundingClientRect().top;
+        if(boxTop < triggerBottom) sec.classList.add("visible");
+      });
+    };
+
+    const highlightNav = () => {
+      let index = sections.length;
+      while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
+      navLinks.forEach(link => link.classList.remove('active'));
+      navLinks[index]?.classList.add('active');
+    };
+
+    window.addEventListener("scroll", () => {
+      reveal();
+      highlightNav();
+    });
+
+    reveal();
+  </script>
+</body>
+</html>
