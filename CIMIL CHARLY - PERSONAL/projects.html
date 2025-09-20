@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Cimil Charly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      padding: 15px;
+      text-align: center;
+      z-index: 1000;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover, nav a.active {
+      color: #1abc9c;
+    }
+    section {
+      padding: 100px 20px 50px;
+      max-width: 1200px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+    .projects ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 0;
+    }
+    .project-card {
+  background: linear-gradient(135deg, #134e5e, #71b280);
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+  cursor: pointer;
+  color: #fff;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  background: linear-gradient(135deg, #0d324d, #1b98e0);
+}
+
+    .project-card b {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+    .project-card p {
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .project-card a {
+      display: inline-block;
+      text-decoration: none;
+      background: #1abc9c;
+      color: #fff;
+      padding: 7px 15px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .project-card a:hover {
+      background: #16a085;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.7);
+      margin-top: 50px;
+    }
+    @media (max-width: 600px) {
+      section {
+        padding: 60px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li class="project-card">
+        <div class="card-content">
+          <b>Pet Pantry Management System</b>
+          <p>Django-based multi-module system</p>
+          <a href="https://github.com/yourusername/petpantry" target="_blank">View on GitHub</a>
+        </div>
+      </li>
+      <li class="project-card">
+        <div class="card-content">
+          <b>Portfolio Website</b>
+          <p>Personal portfolio in HTML/CSS/JS</p>
+          <a href="https://github.com/yourusername/portfolio" target="_blank">View on GitHub</a>
+        </div>
+      </li>
+      <li class="project-card">
+        <div class="card-content">
+          <b>Cloud Simulation</b>
+          <p>Load balancing + DHCP in Packet Tracer</p>
+          <a href="#">Project Demo</a>
+        </div>
+      </li>
+      <li class="project-card">
+        <div class="card-content">
+          <b>Earthquake Alert System</b>
+          <p>Real-time seismic monitoring and alert notifications</p>
+          <a href="https://github.com/yourusername/earthquake-alert" target="_blank">View on GitHub</a>
+        </div>
+      </li>
+      <li class="project-card">
+        <div class="card-content">
+          <b>INTELLIVEND - A NEW ERA OF VENDING</b>
+          <p>Literary/dramatic work, Copyright Registered (L-148670/2024)</p>
+          <a href="#">Read More</a>
+        </div>
+      </li>
+      <li class="project-card">
+        <div class="card-content">
+          <b>Film Ticket Booking System</b>
+          <p>Java frontend with MongoDB backend for booking & payment integration</p>
+          <a href="https://github.com/yourusername/filmticketbooking" target="_blank">View on GitHub</a>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2025 Cimil Charly</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    const reveal = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const boxTop = sec.getBoundingClientRect().top;
+        if(boxTop < triggerBottom) sec.classList.add("visible");
+      });
+    };
+
+    const highlightNav = () => {
+      let index = sections.length;
+      while(--index && window.scrollY + 60 < sections[index].offsetTop) {}
+      navLinks.forEach(link => link.classList.remove('active'));
+      navLinks[index]?.classList.add('active');
+    };
+
+    window.addEventListener("scroll", () => {
+      reveal();
+      highlightNav();
+    });
+
+    reveal();
+  </script>
+</body>
+</html>
